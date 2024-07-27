@@ -20,6 +20,9 @@
 *.o
 *.obj
 
+#temp
+*uasset
+
 # Precompiled Headers
 *.gch
 *.pch
