@@ -15,6 +15,7 @@ USTRUCT(BlueprintType)
 struct FChatMessage
 {
 	GENERATED_BODY()
+public:
 	FString Message;
 	FString Author;
 	
@@ -31,8 +32,8 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void AddToChat(FChatMessage message);
 	
-	UFUNCTION(BlueprintCallable, BlueprintPure);
-	FChatMessage GetChatMessages();
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	TArray<FChatMessage> GetChatMessages();
 	
 	
 };

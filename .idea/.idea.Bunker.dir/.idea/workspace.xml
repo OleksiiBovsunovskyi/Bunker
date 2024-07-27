@@ -7,7 +7,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="803e57de-006f-4f2d-b14a-4a39cecf6f52" name="Changes" comment="" />
+    <list default="true" id="803e57de-006f-4f2d-b14a-4a39cecf6f52" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Bunker.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bunker.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameState_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameState_BP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/HUD/ChatBox.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/HUD/ChatBox.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.h" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
