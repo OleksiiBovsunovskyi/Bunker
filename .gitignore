@@ -21,7 +21,7 @@
 *.obj
 
 #temp
-*uasset
+*.uasset
 
 # Precompiled Headers
 *.gch
