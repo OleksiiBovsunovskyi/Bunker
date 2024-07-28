@@ -26,14 +26,6 @@ class BUNKER_API AGameState_CPP : public AGameState
 {
 	GENERATED_BODY()
 public:
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated)
-	TArray<FChatMessage> ChatLog;
-	
-	UFUNCTION(BlueprintCallable)
-	void AddToChat(FChatMessage message);
-	
-	UFUNCTION(BlueprintCallable, BlueprintPure)
-	TArray<FChatMessage> GetChatMessages();
-	
+
 	
 };
