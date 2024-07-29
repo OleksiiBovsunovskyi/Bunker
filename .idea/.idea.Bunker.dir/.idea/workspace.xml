@@ -7,15 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="803e57de-006f-4f2d-b14a-4a39cecf6f52" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Bunker.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bunker.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/HUD/ChatBox.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/HUD/ChatBox.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Menu/Main_Menu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Menu/Main_Menu.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Menu/SettingsUMG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Menu/SettingsUMG.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.h" afterDir="false" />
-    </list>
+    <list default="true" id="803e57de-006f-4f2d-b14a-4a39cecf6f52" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -143,7 +135,7 @@
       <workItem from="1722035555158" duration="397000" />
       <workItem from="1722083967079" duration="1338000" />
       <workItem from="1722186002827" duration="103000" />
-      <workItem from="1722186129018" duration="1284000" />
+      <workItem from="1722186129018" duration="1770000" />
     </task>
     <servers />
   </component>
