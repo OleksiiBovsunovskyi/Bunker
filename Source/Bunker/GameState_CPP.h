@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/GameState.h"
 #include "Net/UnrealNetwork.h"
+#include "PlayerPropertiesConfig.h"
 #include "GameState_CPP.generated.h"
 
 /**
@@ -25,6 +26,7 @@ public:
 };
 
 
+
 USTRUCT(BlueprintType)
 struct FPlayerData
 {	
@@ -33,8 +35,11 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	FString Name;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FString Other;
-	
+	int ID;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	FPlayerProperty Sex;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	FPlayerProperty Job;
 };
 
 UCLASS()

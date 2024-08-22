@@ -9,19 +9,17 @@
   <component name="ChangeListManager">
     <list default="true" id="803e57de-006f-4f2d-b14a-4a39cecf6f52" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Bunker.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bunker.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameInstance_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameInstance_BP.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameState_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameState_BP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEditor.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEditor.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/MainGameMode.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/MainGameMode.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/PlayerController_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/PlayerController_BP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/SessionGameMode.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/SessionGameMode.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/EntryMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/EntryMap.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/MainMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/MainMap.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Test.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Test.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/UI/GameUI/Bunker.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/GameUI/Bunker.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/GameUI/PlayerInfoProperty_UMG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/GameUI/PlayerInfoProperty_UMG.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/UI/GameUI/PlayerInfo_UMG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/GameUI/PlayerInfo_UMG.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/GameUI/ProfileIcon_UMG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/GameUI/ProfileIcon_UMG.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/HUD/ChatBox.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/HUD/ChatBox.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/HUD/HUD_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/HUD/HUD_BP.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/HUD/HUD_UMG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/HUD/HUD_UMG.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Menu/Play/CreateLobby_UMG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Menu/Play/CreateLobby_UMG.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/Multiplayer/MutlSession.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Multiplayer/MutlSession.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -152,7 +150,10 @@
       <workItem from="1722083967079" duration="1338000" />
       <workItem from="1722186002827" duration="103000" />
       <workItem from="1722186129018" duration="1770000" />
-      <workItem from="1724075072866" duration="5602000" />
+      <workItem from="1724075072866" duration="9437000" />
+      <workItem from="1724160350268" duration="5770000" />
+      <workItem from="1724245120753" duration="3385000" />
+      <workItem from="1724336875315" duration="4023000" />
     </task>
     <servers />
   </component>
