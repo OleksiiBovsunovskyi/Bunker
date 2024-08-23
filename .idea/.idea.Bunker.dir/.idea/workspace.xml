@@ -10,10 +10,7 @@
     <list default="true" id="803e57de-006f-4f2d-b14a-4a39cecf6f52" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Bunker.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bunker.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Menu/Main_Menu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Menu/Main_Menu.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Menu/Play/CreateLobby_UMG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Menu/Play/CreateLobby_UMG.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/UI/Menu/Play/Play_UMG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Menu/Play/Play_UMG.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Multiplayer/MutlSession.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Multiplayer/MutlSession.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +144,7 @@
       <workItem from="1724160350268" duration="5770000" />
       <workItem from="1724245120753" duration="3385000" />
       <workItem from="1724336875315" duration="6092000" />
-      <workItem from="1724418428393" duration="2023000" />
+      <workItem from="1724418428393" duration="4438000" />
     </task>
     <servers />
   </component>

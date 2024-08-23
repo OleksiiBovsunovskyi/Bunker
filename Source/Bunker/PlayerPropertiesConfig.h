@@ -33,5 +33,6 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	static TArray<FPlayerProperty> GetJobOptions(){return  JobOptions;}
-	
+
+
 };
