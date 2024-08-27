@@ -68,6 +68,14 @@ TArray<FPlayerProperty> UPlayerPropertiesConfig::LuggageOptions
 		FPlayerProperty(FText::FromString(L"Снайперская винтовка"), FText::FromString(L""))
 	};
 
+TArray<FPlayerProperty> UPlayerPropertiesConfig::FurtherInformationOptions
+	{
+		FPlayerProperty(FText::FromString(L"Информация1"), FText::FromString(L"")),
+		FPlayerProperty(FText::FromString(L"Информация2"), FText::FromString(L"")),
+		FPlayerProperty(FText::FromString(L"Информация3"), FText::FromString(L""))
+	};
+
+
 
 
 #undef LOCTEXT_NAMESPACE 
