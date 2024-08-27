@@ -78,13 +78,4 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	static TArray<FPlayerProperty> GetLuggageOptions(){return  LuggageOptions;}
 	// LUGGAGE
-	//FURTHER INFORMATION
-	static TArray<FPlayerProperty> FurtherInformationOptions;
-
-	UFUNCTION(BlueprintCallable, BlueprintPure)
-	static TArray<FPlayerProperty> GetFurtherInformationOptions(){return  FurtherInformationOptions;}
-	//FURTHER INFORMATION
-	
-
-
 };
