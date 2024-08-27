@@ -9,8 +9,14 @@
   <component name="ChangeListManager">
     <list default="true" id="803e57de-006f-4f2d-b14a-4a39cecf6f52" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Bunker.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bunker.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Menu/Play/Play_UMG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Menu/Play/Play_UMG.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameState_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameState_BP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/PlayerController_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/PlayerController_BP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/MainMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/MainMap.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/GameUI/Bunker.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/GameUI/Bunker.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/Menu/Play/CreateLobby_UMG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Menu/Play/CreateLobby_UMG.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/Multiplayer/MutlSession.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Multiplayer/MutlSession.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Bunker/PlayerPropertiesConfig.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Bunker/PlayerPropertiesConfig.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,6 +151,7 @@
       <workItem from="1724245120753" duration="3385000" />
       <workItem from="1724336875315" duration="6092000" />
       <workItem from="1724418428393" duration="4438000" />
+      <workItem from="1724593387007" duration="5172000" />
     </task>
     <servers />
   </component>
