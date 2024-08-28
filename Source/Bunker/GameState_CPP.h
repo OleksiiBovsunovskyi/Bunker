@@ -98,7 +98,36 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnPlayerDataChanged();
 
-
+	UFUNCTION()
+	static FPlayerProperty GenerateRandomAgeData(int Min = 16, int Max = 80)
+	{
+		FPlayerProperty AgeData;
+		//Set random seed to ensure new result each time
+		FMath::RandInit(FDateTime::Now().GetTicks());
+		// Generate a random age between Min and Max
+		int32 RandomAge = FMath::RandRange(Min, Max);
+    
+		// Determine the age category
+		FString AgeCategory;
+		if (RandomAge <= 25)
+		{
+			AgeCategory = L"Молодой";
+		}
+		else if (RandomAge <= 60)
+		{
+			AgeCategory = L"Взрослый";
+		}
+		else
+		{
+			AgeCategory = L"Пожилой";
+		}
+    
+		// Format the result as FText
+		AgeData.Property = FText::FromString(FString::Printf(TEXT("%d (%s)"), RandomAge, *AgeCategory));
+    
+		return AgeData;
+	}
+	
 	UFUNCTION(BlueprintCallable)
 	static FPlayerData GeneratePlayerData(int RandomSeed)
 	{
@@ -107,7 +136,9 @@ protected:
 		
 		Data.Sex = UPlayerPropertiesConfig::SexOptions[RandomStream.RandRange(0, UPlayerPropertiesConfig::SexOptions.Num() - 1)];
 		Data.Job = UPlayerPropertiesConfig::JobOptions[RandomStream.RandRange(0, UPlayerPropertiesConfig::JobOptions.Num() - 1)];
-		Data.Age = UPlayerPropertiesConfig::AgeOptions[RandomStream.RandRange(0, UPlayerPropertiesConfig::AgeOptions.Num() - 1)];
+		if(Data.Sex.Property.ToString() == UPlayerPropertiesConfig::SexOptions[0].Property.ToString())
+			Data.Age = GenerateRandomAgeData(18, 78);
+		else Data.Age = GenerateRandomAgeData(18, 82);
 		Data.Health = UPlayerPropertiesConfig::HealthOptions[RandomStream.RandRange(0, UPlayerPropertiesConfig::HealthOptions.Num() - 1)];
 		Data.Hobby = UPlayerPropertiesConfig::HobbyOptions[RandomStream.RandRange(0, UPlayerPropertiesConfig::HobbyOptions.Num() - 1)];
 		Data.Knowledge = UPlayerPropertiesConfig::KnowledgeOptions[RandomStream.RandRange(0, UPlayerPropertiesConfig::KnowledgeOptions.Num() - 1)];
