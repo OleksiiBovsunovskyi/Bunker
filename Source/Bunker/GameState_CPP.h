@@ -97,6 +97,21 @@ protected:
 	void OnChatMessagesChanged();
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnPlayerDataChanged();
+	UFUNCTION()
+	static FPlayerProperty GetRandomPlayerProperty(const TArray<FPlayerProperty>& Source, const FRandomStream& RandomStream)
+	{
+		//FRandomStream RandomStream(RandomSeed);
+		FPlayerProperty Prop;
+		bool bValidProperty = false;
+		
+		while (!bValidProperty)
+		{
+			Prop = Source[RandomStream.RandRange(0, Source.Num() - 1)];
+			bValidProperty = (RandomStream.RandRange(0, 100) / 100.0f) <= Prop.GenChance;
+		}
+
+		return Prop;
+	}
 
 	UFUNCTION()
 	static FPlayerProperty GenerateRandomAgeData(int Min = 16, int Max = 80)
@@ -134,17 +149,18 @@ protected:
 		FRandomStream RandomStream(RandomSeed);
 		FPlayerData Data;
 		
-		Data.Sex = UPlayerPropertiesConfig::SexOptions[RandomStream.RandRange(0, UPlayerPropertiesConfig::SexOptions.Num() - 1)];
-		Data.Job = UPlayerPropertiesConfig::JobOptions[RandomStream.RandRange(0, UPlayerPropertiesConfig::JobOptions.Num() - 1)];
-		if(Data.Sex.Property.ToString() == UPlayerPropertiesConfig::SexOptions[0].Property.ToString())
+		Data.Sex = GetRandomPlayerProperty(UPlayerPropertiesConfig::SexOptions, RandomStream);
+		Data.Job = GetRandomPlayerProperty(UPlayerPropertiesConfig::JobOptions, RandomStream);
+		if (Data.Sex.Property.ToString() == UPlayerPropertiesConfig::SexOptions[0].Property.ToString())
 			Data.Age = GenerateRandomAgeData(18, 78);
-		else Data.Age = GenerateRandomAgeData(18, 82);
-		Data.Health = UPlayerPropertiesConfig::HealthOptions[RandomStream.RandRange(0, UPlayerPropertiesConfig::HealthOptions.Num() - 1)];
-		Data.Hobby = UPlayerPropertiesConfig::HobbyOptions[RandomStream.RandRange(0, UPlayerPropertiesConfig::HobbyOptions.Num() - 1)];
-		Data.Knowledge = UPlayerPropertiesConfig::KnowledgeOptions[RandomStream.RandRange(0, UPlayerPropertiesConfig::KnowledgeOptions.Num() - 1)];
-		Data.Luggage = UPlayerPropertiesConfig::LuggageOptions[RandomStream.RandRange(0, UPlayerPropertiesConfig::LuggageOptions.Num() - 1)];
-		Data.Personality = UPlayerPropertiesConfig::PersonalityOptions[RandomStream.RandRange(0, UPlayerPropertiesConfig::PersonalityOptions.Num() - 1)];
-		Data.Phobia = UPlayerPropertiesConfig::PhobiaOptions[RandomStream.RandRange(0, UPlayerPropertiesConfig::PhobiaOptions.Num() - 1)];
+		else
+			Data.Age = GenerateRandomAgeData(18, 82);
+		Data.Health = GetRandomPlayerProperty(UPlayerPropertiesConfig::HealthOptions, RandomStream);
+		Data.Hobby = GetRandomPlayerProperty(UPlayerPropertiesConfig::HobbyOptions, RandomStream);
+		Data.Knowledge = GetRandomPlayerProperty(UPlayerPropertiesConfig::KnowledgeOptions, RandomStream);
+		Data.Luggage = GetRandomPlayerProperty(UPlayerPropertiesConfig::LuggageOptions, RandomStream);
+		Data.Personality = GetRandomPlayerProperty(UPlayerPropertiesConfig::PersonalityOptions, RandomStream);
+		Data.Phobia = GetRandomPlayerProperty(UPlayerPropertiesConfig::PhobiaOptions, RandomStream);
 
 		return Data;
 	}

@@ -13,11 +13,13 @@ struct FPlayerProperty
 {
 	GENERATED_BODY()
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float GenChance;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	FText Property;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	FText Description;
 	FPlayerProperty();
-	FPlayerProperty(const FText& property, const FText& description		);
+	FPlayerProperty(const FText& property, const FText& description, float genChance = 1	);
 };
 UCLASS(BlueprintType)
 class BUNKER_API UPlayerPropertiesConfig : public UObject
