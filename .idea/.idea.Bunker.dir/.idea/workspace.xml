@@ -9,11 +9,17 @@
   <component name="ChangeListManager">
     <list default="true" id="803e57de-006f-4f2d-b14a-4a39cecf6f52" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Bunker.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bunker.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameState_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameState_BP.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/PlayerController_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/PlayerController_BP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/EntryMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/EntryMap.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/UI/BaseClasses/LabledIMGButton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/BaseClasses/LabledIMGButton.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/UI/GameUI/Bunker.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/GameUI/Bunker.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/GameUI/PlayerInfoProperty_UMG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/GameUI/PlayerInfoProperty_UMG.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/GameUI/PlayerInfo_UMG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/GameUI/PlayerInfo_UMG.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/UI/GameUI/ProfileIcon_UMG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/GameUI/ProfileIcon_UMG.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/UI/Menu/Main_Menu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Menu/Main_Menu.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Bunker/PlayerPropertiesConfig.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Bunker/PlayerPropertiesConfig.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Bunker/PlayerPropertiesConfig.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Bunker/PlayerPropertiesConfig.h" afterDir="false" />
@@ -40,26 +46,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\obols\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\obols\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\obols\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\obols\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\obols\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\obols\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Bunker" type="Uproject" factoryName="rider.uproject">
       <configuration_1>
@@ -158,7 +164,9 @@
       <workItem from="1724792060930" duration="268000" />
       <workItem from="1724855612241" duration="2487000" />
       <workItem from="1724966724460" duration="308000" />
-      <workItem from="1725984685912" duration="5270000" />
+      <workItem from="1725984685912" duration="5516000" />
+      <workItem from="1726070426501" duration="3725000" />
+      <workItem from="1726147227782" duration="9005000" />
     </task>
     <servers />
   </component>

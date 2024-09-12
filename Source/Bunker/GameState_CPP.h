@@ -26,44 +26,66 @@ public:
 };
 
 
-
-USTRUCT(BlueprintType)
-struct FPlayerData
-{	
-	GENERATED_BODY()
-public:
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FString Name;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FPlayerProperty Sex;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FPlayerProperty Job;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FPlayerProperty Age;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FPlayerProperty Health;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FPlayerProperty Hobby;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FPlayerProperty Knowledge;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FPlayerProperty Luggage;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FPlayerProperty Personality;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FPlayerProperty Phobia;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FPlayerProperty OtherInfo;
-
-	
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FString ID;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	bool IsConnected;
-
-	
-
+UENUM(BlueprintType)
+enum class EPropertyCategory : uint8
+{
+	Name		UMETA(DisplayName = "Name"),         // Name property
+	Sex         UMETA(DisplayName = "Sex"),          // Sex property
+	Age         UMETA(DisplayName = "Age"),          // Age property
+	Job         UMETA(DisplayName = "Job"),          // Job property
+	Health      UMETA(DisplayName = "Health"),       // Health property
+	Hobby       UMETA(DisplayName = "Hobby"),        // Hobby property
+	Knowledge   UMETA(DisplayName = "Knowledge"),    // Knowledge property
+	Luggage     UMETA(DisplayName = "Luggage"),      // Luggage property
+	Personality UMETA(DisplayName = "Personality"),  // Personality property
+	Phobia      UMETA(DisplayName = "Phobia"),       // Phobia property
+	OtherInfo   UMETA(DisplayName = "Other Info")    // Other Info property
+   
 };
+UCLASS(BlueprintType)
+class BUNKER_API UPlayerData : public UObject
+{
+    GENERATED_BODY()
+
+public:
+    // Default constructor
+    UPlayerData();
+
+    // Property map with EPropertyCategory as key and FPlayerProperty as value
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Player Data")
+    TMap<EPropertyCategory, FPlayerProperty> PropertiesMap;
+
+    // Player ID
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Player Data")
+    FString ID;
+
+    // Player connection status
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Player Data")
+    bool IsConnected;
+
+    // Getter for property by key
+    UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Player Data")
+    FPlayerProperty GetProperty(EPropertyCategory PropertyKey) const;
+
+	// Setter for property by key with context object defaulted to self
+	UFUNCTION(BlueprintCallable, Category = "Player Data", meta = (DefaultToSelf = "ContextObject"))
+	void SetProperty(EPropertyCategory PropertyKey, const FPlayerProperty& PropertyValue, UObject* ContextObject = nullptr);
+
+	// Setter for ID with context object defaulted to self
+	UFUNCTION(BlueprintCallable, Category = "Player Data", meta = (DefaultToSelf = "ContextObject"))
+	void SetID(const FString& NewID, UObject* ContextObject = nullptr);
+
+	// Setter for IsConnected with context object defaulted to self
+	UFUNCTION(BlueprintCallable, Category = "Player Data", meta = (DefaultToSelf = "ContextObject"))
+	void SetIsConnected(bool NewIsConnected, UObject* ContextObject = nullptr);
+
+	// Combined setter for ID and IsConnected with context object defaulted to self
+	UFUNCTION(BlueprintCallable, Category = "Player Data", meta = (DefaultToSelf = "ContextObject"))
+	void SetPlayerIDAndConnection(const FString& NewID, bool NewIsConnected = true, UObject* ContextObject = nullptr);
+};
+
+
+
 
 UCLASS()
 class BUNKER_API AGameState_CPP : public AGameState
@@ -74,8 +96,8 @@ public:
 	UPROPERTY( BlueprintReadWrite, ReplicatedUsing=OnRep_ChatMessages	)
 	TArray<FChatMessage> ChatMessages;
 
-	UPROPERTY( BlueprintReadWrite, ReplicatedUsing=OnRep_PlayerDataUpdate	)
-	TArray<FPlayerData> PlayerDataArray;
+	UPROPERTY( BlueprintReadWrite, EditAnywhere, Category = "Player Data", ReplicatedUsing=OnRep_PlayerDataUpdate	)
+	TArray<UPlayerData*> PlayerDataArray;
 
 	UFUNCTION()
 	void OnRep_PlayerDataUpdate();
@@ -83,7 +105,7 @@ public:
 	void OnRep_ChatMessages();
 	
 	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
-	static TArray<FPlayerData> GetPlayerData(UObject* WorldContextObject);
+	static TArray<UPlayerData*> GetPlayerData(UObject* WorldContextObject);
 	UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
 	static TArray<FChatMessage> GetChatLog(UObject* WorldContextObject);
 	
@@ -143,25 +165,44 @@ protected:
 		return AgeData;
 	}
 	
-	UFUNCTION(BlueprintCallable)
-	static FPlayerData GeneratePlayerData(int RandomSeed)
+	UFUNCTION(BlueprintCallable,  meta = (WorldContext = "WorldContextObject"))
+	static UPlayerData* GeneratePlayerData(int RandomSeed, UObject* WorldContextObject)
 	{
+		// Initialize the random stream
 		FRandomStream RandomStream(RandomSeed);
-		FPlayerData Data;
-		
-		Data.Sex = GetRandomPlayerProperty(UPlayerPropertiesConfig::SexOptions, RandomStream);
-		Data.Job = GetRandomPlayerProperty(UPlayerPropertiesConfig::JobOptions, RandomStream);
-		if (Data.Sex.Property.ToString() == UPlayerPropertiesConfig::SexOptions[0].Property.ToString())
-			Data.Age = GenerateRandomAgeData(18, 78);
-		else
-			Data.Age = GenerateRandomAgeData(18, 82);
-		Data.Health = GetRandomPlayerProperty(UPlayerPropertiesConfig::HealthOptions, RandomStream);
-		Data.Hobby = GetRandomPlayerProperty(UPlayerPropertiesConfig::HobbyOptions, RandomStream);
-		Data.Knowledge = GetRandomPlayerProperty(UPlayerPropertiesConfig::KnowledgeOptions, RandomStream);
-		Data.Luggage = GetRandomPlayerProperty(UPlayerPropertiesConfig::LuggageOptions, RandomStream);
-		Data.Personality = GetRandomPlayerProperty(UPlayerPropertiesConfig::PersonalityOptions, RandomStream);
-		Data.Phobia = GetRandomPlayerProperty(UPlayerPropertiesConfig::PhobiaOptions, RandomStream);
 
+		// Create a new instance of UPlayerData
+		UPlayerData* Data = NewObject<UPlayerData>();
+
+		// Set the 'Sex' property
+		FPlayerProperty SexProperty = GetRandomPlayerProperty(UPlayerPropertiesConfig::SexOptions, RandomStream);
+		Data->SetProperty(EPropertyCategory::Sex, SexProperty, WorldContextObject);
+
+		// Set the 'Job' property
+		FPlayerProperty JobProperty = GetRandomPlayerProperty(UPlayerPropertiesConfig::JobOptions, RandomStream);
+		Data->SetProperty(EPropertyCategory::Job, JobProperty, WorldContextObject);
+
+		// Set the 'Age' property based on the 'Sex' property
+		FPlayerProperty AgeProperty;
+		if (SexProperty.Property.ToString() == UPlayerPropertiesConfig::SexOptions[0].Property.ToString())
+		{
+			AgeProperty = GenerateRandomAgeData(18, 78);
+		}
+		else
+		{
+			AgeProperty = GenerateRandomAgeData(18, 82);
+		}
+		Data->SetProperty(EPropertyCategory::Age, AgeProperty);
+
+		// Set the remaining properties using the setters
+		Data->SetProperty(EPropertyCategory::Health, GetRandomPlayerProperty(UPlayerPropertiesConfig::HealthOptions, RandomStream));
+		Data->SetProperty(EPropertyCategory::Hobby, GetRandomPlayerProperty(UPlayerPropertiesConfig::HobbyOptions, RandomStream));
+		Data->SetProperty(EPropertyCategory::Knowledge, GetRandomPlayerProperty(UPlayerPropertiesConfig::KnowledgeOptions, RandomStream));
+		Data->SetProperty(EPropertyCategory::Luggage, GetRandomPlayerProperty(UPlayerPropertiesConfig::LuggageOptions, RandomStream));
+		Data->SetProperty(EPropertyCategory::Personality, GetRandomPlayerProperty(UPlayerPropertiesConfig::PersonalityOptions, RandomStream));
+		Data->SetProperty(EPropertyCategory::Phobia, GetRandomPlayerProperty(UPlayerPropertiesConfig::PhobiaOptions, RandomStream));
+
+		// Return the populated UPlayerData instance
 		return Data;
 	}
 

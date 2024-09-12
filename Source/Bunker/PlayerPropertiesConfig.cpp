@@ -74,9 +74,10 @@ FPlayerProperty::FPlayerProperty()
 {
 }
 
-FPlayerProperty::FPlayerProperty(const FText& property, const FText& description, float genChance)
+FPlayerProperty::FPlayerProperty(const FText& property, const FText& description, float genChance, bool isUnlocked)
 {
 	Property = property;
 	Description = description;
 	GenChance = genChance;
+	this->isUnlocked = isUnlocked;
 }
