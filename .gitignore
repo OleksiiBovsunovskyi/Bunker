@@ -14,6 +14,9 @@
 # Visual Studio 2015 user specific files
 .vs/
 
+# Generated project files
+workspace.xml
+
 # Compiled Object files
 *.slo
 *.lo
@@ -85,3 +88,6 @@ Plugins/**/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+.idea/.idea.Bunker.dir/.idea/workspace.xml
+.idea/.idea.Bunker.dir/.idea/workspace.xml
+.idea/.idea.Bunker.dir/.idea/workspace.xml

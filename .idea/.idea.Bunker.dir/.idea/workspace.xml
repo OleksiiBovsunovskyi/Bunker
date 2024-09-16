@@ -8,13 +8,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="803e57de-006f-4f2d-b14a-4a39cecf6f52" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Bunker.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bunker.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/GameState_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/GameState_BP.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/PlayerController_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/PlayerController_BP.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/EntryMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/EntryMap.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/GameUI/Bunker.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/GameUI/Bunker.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/GameUI/PlayerInfoProperty_UMG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/GameUI/PlayerInfoProperty_UMG.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/GameUI/PlayerInfo_UMG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/GameUI/PlayerInfo_UMG.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/GameUI/ProfileIcon_UMG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/GameUI/ProfileIcon_UMG.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -160,7 +157,7 @@
       <workItem from="1725984685912" duration="5270000" />
       <workItem from="1726167238584" duration="73000" />
       <workItem from="1726438999065" duration="6640000" />
-      <workItem from="1726488822129" duration="6593000" />
+      <workItem from="1726488822129" duration="9532000" />
     </task>
     <servers />
   </component>

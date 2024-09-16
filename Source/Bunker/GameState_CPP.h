@@ -111,6 +111,24 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnPlayerDataChanged();
 
+	
+	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+	static bool SetIsConnectedByID(FString ID, bool NewIsConnected, UObject* WorldContextObject)
+	{
+		TArray<FPlayerData>& ARR = GetGameStateCPP(WorldContextObject)->PlayerDataArray;
+		for (int j = 0; j < ARR.Num(); j++) {
+			
+			if (ARR[j].ID == ID) {
+				ARR[j].IsConnected = NewIsConnected;
+				GetGameStateCPP(WorldContextObject)->ForceNetUpdate();  // Force replication update
+				GetGameStateCPP(WorldContextObject)->OnRep_PlayerDataUpdate();
+				return true;
+			}
+		}
+		return false;
+
+	}
+		
 	UFUNCTION(BlueprintCallable)
 	void SetIsConnected(UPARAM(ref) FPlayerData& Data, bool NewIsConnected)
 	{
