@@ -10,10 +10,10 @@
     <list default="true" id="803e57de-006f-4f2d-b14a-4a39cecf6f52" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Bunker.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bunker.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/PlayerController_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/PlayerController_BP.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/BaseClasses/LabledIMGButton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/BaseClasses/LabledIMGButton.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/UI/GameUI/Bunker.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/GameUI/Bunker.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/GameUI/PlayerInfoProperty_UMG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/GameUI/PlayerInfoProperty_UMG.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/GameUI/PlayerInfo_UMG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/GameUI/PlayerInfo_UMG.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/UI/GameUI/ProfileIcon_UMG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/GameUI/ProfileIcon_UMG.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Menu/Main_Menu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Menu/Main_Menu.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Bunker/PlayerPropertiesConfig.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Bunker/PlayerPropertiesConfig.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Bunker/PlayerPropertiesConfig.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Bunker/PlayerPropertiesConfig.h" afterDir="false" />
@@ -43,7 +43,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "RevertBranch",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -159,6 +159,8 @@
       <workItem from="1724855612241" duration="2487000" />
       <workItem from="1724966724460" duration="308000" />
       <workItem from="1725984685912" duration="5270000" />
+      <workItem from="1726167238584" duration="73000" />
+      <workItem from="1726438999065" duration="6640000" />
     </task>
     <servers />
   </component>

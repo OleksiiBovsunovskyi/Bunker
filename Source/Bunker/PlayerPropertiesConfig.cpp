@@ -4,69 +4,66 @@
 #include "PlayerPropertiesConfig.h"
 #include "Internationalization/TextTransformer.h" 
 #define LOCTEXT_NAMESPACE "Player data"
-TArray<FPlayerProperty> UPlayerPropertiesConfig::SexOptions
-	{
-		FPlayerProperty(FText::FromString(TEXT("Мужчина")), FText::FromString(TEXT("Мужчина")), 1),
-		FPlayerProperty(FText::FromString(TEXT("Женщина")), FText::FromString(TEXT("Женщина")), 1)
-	
-	};
 
-TArray<FPlayerProperty> UPlayerPropertiesConfig::JobOptions
-	{
-		FPlayerProperty(FText::FromString(L"Адвокат"), FText::FromString(L"Представляет интересы клиентов в суде и консультирует по юридическим вопросам."),1),
-	FPlayerProperty(FText::FromString(L"Архитектор"), FText::FromString(L"Проектирует здания и сооружения, следя за их функциональностью и эстетикой."),1),
-	FPlayerProperty(FText::FromString(L"Библиотекарь"), FText::FromString(L"Управляет библиотечными ресурсами и помогает посетителям находить информацию."),1)
-	
-	};
+#include "PlayerPropertiesConfig.h"
 
-TArray<FPlayerProperty> UPlayerPropertiesConfig::AgeOptions
-    {
-    	FPlayerProperty(FText::FromString(L"20"), FText::FromString(L"Молодой"),1),
-    	FPlayerProperty(FText::FromString(L"47"), FText::FromString(L"Взрослый"),0.5),
-    	FPlayerProperty(FText::FromString(L"69"), FText::FromString(L"Пожилой"),0.2)
-    };
+// Static const initialization in the cpp file
+TMap<EPropertyCategory, TArray<FPlayerProperty>> UPlayerPropertiesConfig::PropertiesList =
+{
+    { EPropertyCategory::Sex, {
+        FPlayerProperty(FText::FromString(TEXT("Мужчина")), FText::FromString(TEXT("Мужчина")), 1),
+        FPlayerProperty(FText::FromString(TEXT("Женщина")), FText::FromString(TEXT("Женщина")), 1)
+    }},
 
-TArray<FPlayerProperty> UPlayerPropertiesConfig::HealthOptions
-    {
-    	FPlayerProperty(FText::FromString(L"Идеальное здоровье"), FText::FromString(L""),0.4),
-		FPlayerProperty(FText::FromString(L"Авитаминоз"), FText::FromString(L" Недостаток витаминов в организме, вызывающий различные симптомы и заболевания."), 0.2),
-		FPlayerProperty(FText::FromString(L"Азооспермия"), FText::FromString(L"Отсутствие сперматозоидов в эякуляте, что приводит к мужскому бесплодию."),0.5)
-    };
 
-TArray<FPlayerProperty> UPlayerPropertiesConfig::HobbyOptions
-	{
-		FPlayerProperty(FText::FromString(L"Спортивные игры в команде"), FText::FromString(L""), 1),
-		FPlayerProperty(FText::FromString(L"Йога"), FText::FromString(L""), 1),
-		FPlayerProperty(FText::FromString(L"Езда на велосипед"), FText::FromString(L""), 1)
-	};
+    { EPropertyCategory::Job, {
+        FPlayerProperty(FText::FromString(TEXT("Doctor")), FText::FromString(TEXT("Medical professional")), 0.2f),
+        FPlayerProperty(FText::FromString(TEXT("Engineer")), FText::FromString(TEXT("Technical professional")), 0.3f),
+        FPlayerProperty(FText::FromString(TEXT("Artist")), FText::FromString(TEXT("Creative professional")), 0.1f)
+    }},
 
-TArray<FPlayerProperty> UPlayerPropertiesConfig::PhobiaOptions
-	{
-		FPlayerProperty(FText::FromString(L"Авиафобия"), FText::FromString(L"Боязнь полётов в воздушных транспортных средствах"), 1),
-		FPlayerProperty(FText::FromString(L"Агирофобия"), FText::FromString(L"Боязнь  улиц, пересекать улицу")),
-		FPlayerProperty(FText::FromString(L"Агорафобия"), FText::FromString(L"Боязнь пространства, открытых мест, площадей, толп людей"))
-	};
+    { EPropertyCategory::Health, {
+        FPlayerProperty(FText::FromString(TEXT("Healthy")), FText::FromString(TEXT("No known medical conditions")), 0.7f),
+        FPlayerProperty(FText::FromString(TEXT("Diabetic")), FText::FromString(TEXT("Chronic medical condition")), 0.2f),
+        FPlayerProperty(FText::FromString(TEXT("Asthmatic")), FText::FromString(TEXT("Respiratory condition")), 0.1f)
+    }},
 
-TArray<FPlayerProperty> UPlayerPropertiesConfig::PersonalityOptions
-	{
-		FPlayerProperty(FText::FromString(L"Агрессивный"), FText::FromString(L"")),
-		FPlayerProperty(FText::FromString(L"Алчный"), FText::FromString(L"")),
-		FPlayerProperty(FText::FromString(L"Альтруист"), FText::FromString(L""))
-	};
+    { EPropertyCategory::Hobby, {
+        FPlayerProperty(FText::FromString(TEXT("Reading")), FText::FromString(TEXT("Enjoys reading books")), 0.4f),
+        FPlayerProperty(FText::FromString(TEXT("Traveling")), FText::FromString(TEXT("Enjoys traveling")), 0.3f),
+        FPlayerProperty(FText::FromString(TEXT("Cooking")), FText::FromString(TEXT("Loves experimenting with food")), 0.3f)
+    }},
 
-TArray<FPlayerProperty> UPlayerPropertiesConfig::KnowledgeOptions
-	{
-		FPlayerProperty(FText::FromString(L"Лично знаком с президентом страны"), FText::FromString(L"")),
-		FPlayerProperty(FText::FromString(L"Однажды выиграл миллион в лотерею"), FText::FromString(L"")),
-		FPlayerProperty(FText::FromString(L"Знает каждый уголок этой местности, проводил здесь каждое лето с детства"), FText::FromString(L""))
-	};
+    { EPropertyCategory::Knowledge, {
+        FPlayerProperty(FText::FromString(TEXT("Physics")), FText::FromString(TEXT("Expert in physics")), 0.3f),
+        FPlayerProperty(FText::FromString(TEXT("Mathematics")), FText::FromString(TEXT("Skilled in mathematics")), 0.5f),
+        FPlayerProperty(FText::FromString(TEXT("History")), FText::FromString(TEXT("Has a deep knowledge of history")), 0.2f)
+    }},
 
-TArray<FPlayerProperty> UPlayerPropertiesConfig::LuggageOptions
-	{
-		FPlayerProperty(FText::FromString(L"Коробка спичек 5шт"), FText::FromString(L"")),
-		FPlayerProperty(FText::FromString(L"Охотничье ружье и патроны"), FText::FromString(L"")),
-		FPlayerProperty(FText::FromString(L"Снайперская винтовка"), FText::FromString(L""))
-	};
+    { EPropertyCategory::Luggage, {
+        FPlayerProperty(FText::FromString(TEXT("Backpack")), FText::FromString(TEXT("Carries a backpack")), 0.6f),
+        FPlayerProperty(FText::FromString(TEXT("Suitcase")), FText::FromString(TEXT("Carries a suitcase")), 0.3f),
+        FPlayerProperty(FText::FromString(TEXT("Duffel Bag")), FText::FromString(TEXT("Carries a duffel bag")), 0.1f)
+    }},
+
+    { EPropertyCategory::Personality, {
+        FPlayerProperty(FText::FromString(TEXT("Outgoing")), FText::FromString(TEXT("Extroverted and social")), 0.4f),
+        FPlayerProperty(FText::FromString(TEXT("Introverted")), FText::FromString(TEXT("Prefers solitude")), 0.3f),
+        FPlayerProperty(FText::FromString(TEXT("Ambitious")), FText::FromString(TEXT("Driven and goal-oriented")), 0.3f)
+    }},
+
+    { EPropertyCategory::Phobia, {
+        FPlayerProperty(FText::FromString(TEXT("Arachnophobia")), FText::FromString(TEXT("Fear of spiders")), 0.2f),
+        FPlayerProperty(FText::FromString(TEXT("Acrophobia")), FText::FromString(TEXT("Fear of heights")), 0.3f),
+        FPlayerProperty(FText::FromString(TEXT("Claustrophobia")), FText::FromString(TEXT("Fear of confined spaces")), 0.5f)
+    }},
+
+    { EPropertyCategory::OtherInfo, {
+        FPlayerProperty(FText::FromString(TEXT("Vegetarian")), FText::FromString(TEXT("Follows a vegetarian diet")), 0.4f),
+        FPlayerProperty(FText::FromString(TEXT("Non-Smoker")), FText::FromString(TEXT("Does not smoke")), 0.6f)
+    }}
+};
+
 
 
 #undef LOCTEXT_NAMESPACE 

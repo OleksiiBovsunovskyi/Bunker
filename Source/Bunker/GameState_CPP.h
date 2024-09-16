@@ -3,9 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Misc/SecureHash.h"
 #include "GameFramework/GameState.h"
 #include "Net/UnrealNetwork.h"
 #include "PlayerPropertiesConfig.h"
+#include "Iris/ReplicationState/ReplicationStateUtil.h"
 #include "GameState_CPP.generated.h"
 
 /**
@@ -27,42 +29,17 @@ public:
 
 
 
+
 USTRUCT(BlueprintType)
 struct FPlayerData
 {	
 	GENERATED_BODY()
-public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FString Name;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FPlayerProperty Sex;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FPlayerProperty Job;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FPlayerProperty Age;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FPlayerProperty Health;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FPlayerProperty Hobby;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FPlayerProperty Knowledge;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FPlayerProperty Luggage;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FPlayerProperty Personality;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FPlayerProperty Phobia;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FPlayerProperty OtherInfo;
-
-	
+	int LocalGenSeed;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	FString ID;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	bool IsConnected;
-
-	
-
 };
 
 UCLASS()
@@ -97,6 +74,15 @@ protected:
 	void OnChatMessagesChanged();
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnPlayerDataChanged();
+
+	UFUNCTION()
+	void SetIsConnected(UPARAM(ref) FPlayerData& Data, bool NewIsConnected)
+	{
+		if(!HasAuthority() ) UE_LOG(LogTemp, Warning, TEXT("Tried to modify IsConnected from client, call this only on server"));
+		
+		Data.IsConnected = NewIsConnected;
+		OnRep_PlayerDataUpdate();
+	}
 	UFUNCTION()
 	static FPlayerProperty GetRandomPlayerProperty(const TArray<FPlayerProperty>& Source, const FRandomStream& RandomStream)
 	{
@@ -113,8 +99,21 @@ protected:
 		return Prop;
 	}
 
+	
+	UFUNCTION(BlueprintCallable)
+	static FPlayerProperty GeneratePlayerProperty(EPropertyCategory PropertyCategory, int RoomSeed, int LocalSeed, int AgeMin = 16, int AgeMax = 80)
+	{
+		FPlayerProperty Prop;
+		int Seed = (RoomSeed/2)+(LocalSeed/2);
+		FMath::RandInit(Seed);
+		//Age is generated as random number, it is not chosen from config array
+		if(PropertyCategory == EPropertyCategory::Age)
+			return GenerateRandomAgeData(RoomSeed, LocalSeed, AgeMin, AgeMax);
+		return UPlayerPropertiesConfig::GetPropertyBySeed(Seed, PropertyCategory);
+		
+	}
 	UFUNCTION()
-	static FPlayerProperty GenerateRandomAgeData(int Min = 16, int Max = 80)
+	static FPlayerProperty GenerateRandomAgeData(int RoomSeed, int LocalSeed, int Min = 16, int Max = 80)
 	{
 		FPlayerProperty AgeData;
 		//Set random seed to ensure new result each time
@@ -142,27 +141,29 @@ protected:
     
 		return AgeData;
 	}
-	
-	UFUNCTION(BlueprintCallable)
-	static FPlayerData GeneratePlayerData(int RandomSeed)
-	{
-		FRandomStream RandomStream(RandomSeed);
-		FPlayerData Data;
-		
-		Data.Sex = GetRandomPlayerProperty(UPlayerPropertiesConfig::SexOptions, RandomStream);
-		Data.Job = GetRandomPlayerProperty(UPlayerPropertiesConfig::JobOptions, RandomStream);
-		if (Data.Sex.Property.ToString() == UPlayerPropertiesConfig::SexOptions[0].Property.ToString())
-			Data.Age = GenerateRandomAgeData(18, 78);
-		else
-			Data.Age = GenerateRandomAgeData(18, 82);
-		Data.Health = GetRandomPlayerProperty(UPlayerPropertiesConfig::HealthOptions, RandomStream);
-		Data.Hobby = GetRandomPlayerProperty(UPlayerPropertiesConfig::HobbyOptions, RandomStream);
-		Data.Knowledge = GetRandomPlayerProperty(UPlayerPropertiesConfig::KnowledgeOptions, RandomStream);
-		Data.Luggage = GetRandomPlayerProperty(UPlayerPropertiesConfig::LuggageOptions, RandomStream);
-		Data.Personality = GetRandomPlayerProperty(UPlayerPropertiesConfig::PersonalityOptions, RandomStream);
-		Data.Phobia = GetRandomPlayerProperty(UPlayerPropertiesConfig::PhobiaOptions, RandomStream);
 
-		return Data;
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	static int32 GetSeedFromNickname(const FString& Nickname)
+	{
+		// Convert the nickname to a SHA-256 hash
+		TArray<uint8> Data;
+		Data.Append((uint8*)TCHAR_TO_ANSI(*Nickname), Nickname.Len());
+
+		FSHAHash Hash;
+		FSHA1::HashBuffer(Data.GetData(), Data.Num(), Hash.Hash);
+
+		// Convert the hash to an integer seed
+		int32 Seed = 0;
+		for (int32 i = 0; i < Hash.ToString().Len(); ++i)
+		{
+			Seed += Hash.ToString()[i];
+		}
+
+		return Seed;
 	}
+
+	
+
+
 
 };

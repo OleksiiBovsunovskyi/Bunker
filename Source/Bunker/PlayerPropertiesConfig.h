@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include <random>
 #include "Chaos/Tetrahedron.h"
 #include "PlayerPropertiesConfig.generated.h"
 /**
@@ -21,63 +22,37 @@ struct FPlayerProperty
 	FPlayerProperty();
 	FPlayerProperty(const FText& property, const FText& description, float genChance = 1	);
 };
+
+UENUM(BlueprintType)
+enum class EPropertyCategory : uint8
+{
+	Sex         UMETA(DisplayName = "Sex"),          // Sex property
+	Age         UMETA(DisplayName = "Age"),          // Age property
+	Job         UMETA(DisplayName = "Job"),          // Job property
+	Health      UMETA(DisplayName = "Health"),       // Health property
+	Hobby       UMETA(DisplayName = "Hobby"),        // Hobby property
+	Knowledge   UMETA(DisplayName = "Knowledge"),    // Knowledge property
+	Luggage     UMETA(DisplayName = "Luggage"),      // Luggage property
+	Personality UMETA(DisplayName = "Personality"),  // Personality property
+	Phobia      UMETA(DisplayName = "Phobia"),       // Phobia property
+	OtherInfo   UMETA(DisplayName = "Other Info")    // Other Info property
+};
 UCLASS(BlueprintType)
 class BUNKER_API UPlayerPropertiesConfig : public UObject
 {
 	GENERATED_BODY()
 public:
-	//  SEX
-	static TArray<FPlayerProperty> SexOptions;
 
-	UFUNCTION(BlueprintCallable, BlueprintPure)
-	static TArray<FPlayerProperty> GetSexOptions(){return  SexOptions;}
-	// SEX
-	// JOB
-	static TArray<FPlayerProperty> JobOptions;
 
+	static TMap<EPropertyCategory, TArray<FPlayerProperty>> PropertiesList;
 	UFUNCTION(BlueprintCallable, BlueprintPure)
-	static TArray<FPlayerProperty> GetJobOptions(){return  JobOptions;}
-    // JOB
-	// AGE
-	static TArray<FPlayerProperty> AgeOptions;
-
-	UFUNCTION(BlueprintCallable, BlueprintPure)
-	static TArray<FPlayerProperty> GetAgeOptions(){return  AgeOptions;}
-	// AGE
-	// HEALTH
-	static TArray<FPlayerProperty> HealthOptions;
-
-	UFUNCTION(BlueprintCallable, BlueprintPure)
-	static TArray<FPlayerProperty> GetHealthOptions(){return  HealthOptions;}
-	// HEALTH
-	// HOBBY
-	static TArray<FPlayerProperty> HobbyOptions;
-
-	UFUNCTION(BlueprintCallable, BlueprintPure)
-	static TArray<FPlayerProperty> GetHobbyOptions(){return  HobbyOptions;}
-	// HOBBY
-	// PHOBIA
-	static TArray<FPlayerProperty> PhobiaOptions;
-
-	UFUNCTION(BlueprintCallable, BlueprintPure)
-	static TArray<FPlayerProperty> GetPhobiaOptions(){return  PhobiaOptions;}
-	// PHOBIA
-	// PERSONALITY
-	static TArray<FPlayerProperty> PersonalityOptions;
-
-	UFUNCTION(BlueprintCallable, BlueprintPure)
-	static TArray<FPlayerProperty> GetPersonalityOptions(){return  PersonalityOptions;}
-	// PERSONALITY
-	// KNOWLEDGE
-	static TArray<FPlayerProperty> KnowledgeOptions;
-
-	UFUNCTION(BlueprintCallable, BlueprintPure)
-	static TArray<FPlayerProperty> GetKnowledgeOptions(){return  KnowledgeOptions;}
-	// KNOWLEDGE
-	// LUGGAGE
-	static TArray<FPlayerProperty> LuggageOptions;
-
-	UFUNCTION(BlueprintCallable, BlueprintPure)
-	static TArray<FPlayerProperty> GetLuggageOptions(){return  LuggageOptions;}
-	// LUGGAGE
+	static FPlayerProperty GetPropertyBySeed(int Seed, EPropertyCategory Category)
+	{
+		std::mt19937 mt(GetTypeHash(Seed) + static_cast<int>(Category));
+		
+		std::uniform_int_distribution<int> dist(0, PropertiesList[Category].Num()-1);
+		int Indx = dist(mt);
+		return PropertiesList[Category][Indx];
+	}
+	
 };
