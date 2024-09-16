@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Containers/Map.h"
 #include "Misc/SecureHash.h"
 #include "GameFramework/GameState.h"
 #include "Net/UnrealNetwork.h"
@@ -28,12 +29,47 @@ public:
 };
 
 
+USTRUCT(BlueprintType)
+struct FPropertyCategoryPair
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	EPropertyCategory Category;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	bool bIsUnlocked;
+
+	// Constructor for convenience
+	FPropertyCategoryPair()
+		: Category(EPropertyCategory::Sex), bIsUnlocked(false) {}
+
+	FPropertyCategoryPair(EPropertyCategory InCategory, bool bInIsUnlocked)
+		: Category(InCategory), bIsUnlocked(bInIsUnlocked) {}
+};
 
 
 USTRUCT(BlueprintType)
 struct FPlayerData
 {	
 	GENERATED_BODY()
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	FString Name;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	TArray<FPropertyCategoryPair> UnlockedProp =
+	{
+		FPropertyCategoryPair(EPropertyCategory::Sex, false),
+		FPropertyCategoryPair(EPropertyCategory::Age, false),
+		FPropertyCategoryPair(EPropertyCategory::Job, false),
+		FPropertyCategoryPair(EPropertyCategory::Health, false),
+		FPropertyCategoryPair(EPropertyCategory::Hobby, false),
+		FPropertyCategoryPair(EPropertyCategory::Knowledge, false),
+		FPropertyCategoryPair(EPropertyCategory::Luggage, false),
+		FPropertyCategoryPair(EPropertyCategory::Personality, false),
+		FPropertyCategoryPair(EPropertyCategory::Phobia, false),
+		FPropertyCategoryPair(EPropertyCategory::OtherInfo, false)
+	};
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	int LocalGenSeed;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
@@ -75,7 +111,7 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnPlayerDataChanged();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void SetIsConnected(UPARAM(ref) FPlayerData& Data, bool NewIsConnected)
 	{
 		if(!HasAuthority() ) UE_LOG(LogTemp, Warning, TEXT("Tried to modify IsConnected from client, call this only on server"));
@@ -83,6 +119,45 @@ protected:
 		Data.IsConnected = NewIsConnected;
 		OnRep_PlayerDataUpdate();
 	}
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	static bool GetIsUnlocked(UPARAM(ref) FPlayerData& Data, EPropertyCategory Prop)
+	{
+		for (FPropertyCategoryPair& Pair : Data.UnlockedProp)
+		{
+			if (Pair.Category == Prop)
+			{
+				return Pair.bIsUnlocked;
+			}
+		}
+		return false;
+	}
+
+	UFUNCTION(BlueprintCallable)
+	void SetUnlockedProperty(UPARAM(ref) FPlayerData& Data, EPropertyCategory Prop, bool IsUnlocked = true)
+	{
+	//if (!HasAuthority())
+	//{
+	//	UE_LOG(LogTemp, Warning, TEXT("Tried to modify IsUnlocked from client, call this only on server"));
+	//	return;
+	//}
+
+		// Find and update the property in the array
+		for (FPropertyCategoryPair& Pair : Data.UnlockedProp)
+		{
+			if (Pair.Category == Prop)
+			{
+				Pair.bIsUnlocked = IsUnlocked;
+				ForceNetUpdate();  // Force replication update
+				OnRep_PlayerDataUpdate();
+				return;
+			}
+		}
+
+		// If not found, log a warning (this shouldn't happen unless the array is modified elsewhere)
+		UE_LOG(LogTemp, Warning, TEXT("Property not found in UnlockedProp array!"));
+	}
+
+	
 	UFUNCTION()
 	static FPlayerProperty GetRandomPlayerProperty(const TArray<FPlayerProperty>& Source, const FRandomStream& RandomStream)
 	{
