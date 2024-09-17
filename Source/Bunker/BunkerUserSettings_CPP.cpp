@@ -12,3 +12,16 @@ void UBunkerUserSettings_CPP::SetUserNickName(FString NewUserNickName)
 {
 	UserNickName = NewUserNickName;
 }
+
+float UBunkerUserSettings_CPP::GetMouseSensitivity() const
+{
+	return MouseSensitivity;
+}
+
+void UBunkerUserSettings_CPP::SetMouseSensitivity(float NewSensitivity)
+{
+	MouseSensitivity = NewSensitivity;
+	
+}
+
+

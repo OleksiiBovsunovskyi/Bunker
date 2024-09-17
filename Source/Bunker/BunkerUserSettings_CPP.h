@@ -13,18 +13,33 @@ UCLASS()
 class BUNKER_API UBunkerUserSettings_CPP : public UGameUserSettings
 {
 	GENERATED_BODY()
+
 private:
 	UPROPERTY(Config)
 	FString UserNickName;
+
+	
+	UPROPERTY(Config)
+	float MouseSensitivity = 1.0f;  
+
 public:
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	FString GetUserNickName();
+
 	UFUNCTION(BlueprintCallable)
 	void SetUserNickName(FString NewUserNickName);
+	
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	float GetMouseSensitivity() const;  
 
+	UFUNCTION(BlueprintCallable)
+	void SetMouseSensitivity(float NewSensitivity);  
+	
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	static UBunkerUserSettings_CPP* GetBunkerUserSettings_CPP()
 	{
 		return Cast<UBunkerUserSettings_CPP>(GetGameUserSettings());
 	}
+	
 };
+
