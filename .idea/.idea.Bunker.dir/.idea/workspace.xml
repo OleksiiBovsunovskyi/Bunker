@@ -10,8 +10,13 @@
     <list default="true" id="803e57de-006f-4f2d-b14a-4a39cecf6f52" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Bunker.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bunker.dir/.idea/workspace.xml" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/PlayerController_BP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/PlayerController_BP.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/UI/GameUI/ProfileIcon_UMG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/GameUI/ProfileIcon_UMG.uasset" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/Content/UI/GameUI/PlayerInfoProperty_UMG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/GameUI/PlayerInfoProperty_UMG.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/GameUI/PlayerInfo_UMG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/GameUI/PlayerInfo_UMG.uasset" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Bunker/GameState_CPP.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,26 +41,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Master3&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "BetterSettings",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
+<<<<<<< Updated upstream
   &quot;keyToStringList&quot;: {
     &quot;rider.external.source.directories&quot;: [
       &quot;C:\\Users\\obols\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
       &quot;C:\\Users\\obols\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
       &quot;C:\\Users\\obols\\AppData\\Local\\Symbols\\src&quot;
+=======
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\obols\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\obols\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\obols\\AppData\\Local\\Symbols\\src"
+>>>>>>> Stashed changes
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Bunker" type="Uproject" factoryName="rider.uproject">
       <configuration_1>
@@ -158,6 +171,15 @@
       <workItem from="1726167238584" duration="73000" />
       <workItem from="1726438999065" duration="6640000" />
       <workItem from="1726488822129" duration="9532000" />
+<<<<<<< Updated upstream
+=======
+      <workItem from="1726522345653" duration="310000" />
+      <workItem from="1726581608289" duration="10000" />
+      <workItem from="1726582711052" duration="383000" />
+      <workItem from="1726583228859" duration="132000" />
+      <workItem from="1726584052102" duration="116000" />
+      <workItem from="1726751681967" duration="4118000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>

@@ -47,7 +47,18 @@ struct FPropertyCategoryPair
 	FPropertyCategoryPair(EPropertyCategory InCategory, bool bInIsUnlocked)
 		: Category(InCategory), bIsUnlocked(bInIsUnlocked) {}
 };
+USTRUCT(BlueprintType)
+struct FPropertyOverwrite
+{
+	GENERATED_BODY()
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	EPropertyCategory Category;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	FPlayerProperty NewProperty;
+
+};
 
 USTRUCT(BlueprintType)
 struct FPlayerData
@@ -55,7 +66,10 @@ struct FPlayerData
 	GENERATED_BODY()
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	FString Name;
-
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	TArray<FPropertyOverwrite> PropertyOverwrites;
+	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	TArray<FPropertyCategoryPair> UnlockedProp =
 	{
@@ -111,6 +125,29 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnPlayerDataChanged();
 
+	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+	static void OverWriteProperty(FString ID, FPropertyOverwrite Overwrite, UObject* WorldContextObject)
+	{
+		TArray<FPlayerData>& PlayerDataArray = GetGameStateCPP(WorldContextObject)->PlayerDataArray;
+
+		for(int i = 0; i < PlayerDataArray.Num(); i++)
+		{
+			if(PlayerDataArray[i].ID == ID)
+			{
+				for(int j = 0; j < PlayerDataArray[i].PropertyOverwrites.Num(); j++)
+				{
+					if(PlayerDataArray[i].PropertyOverwrites[j].Category == Overwrite.Category)
+					{
+						PlayerDataArray[i].PropertyOverwrites.RemoveAt(j);
+					}
+				}
+				PlayerDataArray[i].PropertyOverwrites.Add(Overwrite);
+				GetGameStateCPP(WorldContextObject)->ForceNetUpdate();
+				GetGameStateCPP(WorldContextObject)->OnRep_PlayerDataUpdate();
+				return;
+			}
+		}
+	}
 	
 	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
 	static bool SetIsConnectedByID(FString ID, bool NewIsConnected, UObject* WorldContextObject)
@@ -191,13 +228,47 @@ protected:
 
 		return Prop;
 	}
+	
+	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+	static void GetPlayerDataByID(UObject*WorldContextObject, FString ID, FPlayerData& DataOut)
+	{
+		TArray<FPlayerData>& PlayerDataArray = GetGameStateCPP(WorldContextObject)->PlayerDataArray;
+		for(int i = 0; i < PlayerDataArray.Num(); i++)
+		{
+			if(PlayerDataArray[i].ID == ID)
+				DataOut = PlayerDataArray[i];
+		}
+	}
 
 	
-	UFUNCTION(BlueprintCallable)
-	static FPlayerProperty GeneratePlayerProperty(EPropertyCategory PropertyCategory, int RoomSeed, int LocalSeed, int AgeMin = 16, int AgeMax = 80)
+	
+	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+	static FPlayerProperty GetPropertyOverWrite(UObject*WorldContextObject, FString ID, EPropertyCategory Category)
 	{
-		FPlayerProperty Prop;
+		FPlayerData PlayerData;
+		GetPlayerDataByID(WorldContextObject, ID, PlayerData);
+
+		for(auto i : PlayerData.PropertyOverwrites)
+		{
+			if(i.Category == Category)
+				return i.NewProperty;
+		}
+		return FPlayerProperty();
+	}
+	
+	UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+	static FPlayerProperty GeneratePlayerProperty(UObject*WorldContextObject, EPropertyCategory PropertyCategory, int RoomSeed,
+		FString PlayerID, int AgeMin = 16, int AgeMax = 80)
+	{
+		FPlayerData PlayerData;
+		GetPlayerDataByID(WorldContextObject, PlayerID, PlayerData);
+		int LocalSeed = PlayerData.LocalGenSeed;
+		FPlayerProperty Prop = GetPropertyOverWrite(WorldContextObject, PlayerID, PropertyCategory);
+		if( !Prop.Property.IsEmpty())
+			return  Prop;
+	
 		int Seed = (RoomSeed/2)+(LocalSeed/2);
+		
 		FMath::RandInit(Seed);
 		//Age is generated as random number, it is not chosen from config array
 		if(PropertyCategory == EPropertyCategory::Age)
